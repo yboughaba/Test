@@ -7,7 +7,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.linear_model import LinearRegression, RidgeCV, LassoCV
 from sklearn.model_selection import KFold, cross_val_score, train_test_split
 from sklearn.metrics import mean_squared_error
-
+import pickle
 #encoder les données catégorielle et cleaning des données
 def clean_trainData(data):
    data.drop_duplicates(subset=None, keep='first', inplace=False, ignore_index=False)
@@ -66,6 +66,7 @@ def train_model(data,X,y):
   lr_score_train = np.mean(lr_scores)
   
   #enregistrement du modèle dans un fichier 
-  def save_model(path):
+def save_model():
    model= LinearRegression().fit(X_train_scaled, y_train)
-   model.save(path)
+   filename = 'model.sav'
+   pickle.dump(model, open(filename, 'wb'))
