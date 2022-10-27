@@ -48,10 +48,14 @@ def train_model(X,y):
   X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
   X_train_scaled = scale(X_train)
   X_test_scaled = scale(X_test)
+#Régression lineéaire
   lin_reg = LinearRegression().fit(X_train_scaled, y_train)
+  #Régularisation L1
   lasso_reg = LassoCV().fit(X_train_scaled, y_train)
+  #Régularisation L2
   ridge_reg = RidgeCV().fit(X_train_scaled, y_train)
-
+  y_predicted = lin_reg.predict(X_test_scaled)
+  return(y_predicted)
   
  #Obtenire les different metrics
 
