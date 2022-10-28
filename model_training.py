@@ -59,7 +59,7 @@ def train_model(X,y):
   
  #Obtenire les different metrics
 
- def get_parameters(X_train_scaled,y_train):
+ def get_parameters(X_train_scaled,y_train,y_test,y_predicted):
   # Get R2 score
   lin_reg.score(X_train_scaled, y_train)
   lasso_reg.score(X_train_scaled, y_train)
